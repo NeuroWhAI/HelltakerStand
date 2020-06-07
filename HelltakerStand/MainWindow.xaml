@@ -1,0 +1,35 @@
+﻿<Window x:Class="HelltakerStand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelltakerStand"
+        mc:Ignorable="d"
+        Title="Helltaker Stand" Height="400" Width="300"
+        Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <ToggleButton x:Name="chkAutorun" ToolTip="Start when windows starts."
+                          Checked="ChkAutorun_CheckChanged" Unchecked="ChkAutorun_CheckChanged">Autorun</ToggleButton>
+            <Separator/>
+            <Button Click="ButtonHide_Click" ToolTip="Hide this window.">Hide</Button>
+            <Separator/>
+            <Button Command="{Binding SyncCommand}" ToolTip="Reset current frame for all stands.">Sync</Button>
+        </ToolBar>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding StandList}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Padding="4" Margin="0,2"
+                                Content="{Binding}"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.StandCommand}"
+                                CommandParameter="{Binding}"></Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

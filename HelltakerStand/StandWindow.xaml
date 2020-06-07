@@ -1,0 +1,26 @@
+﻿<Window x:Class="HelltakerStand.StandWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:HelltakerStand"
+        mc:Ignorable="d"
+        Title="StandWindow" SizeToContent="WidthAndHeight" ResizeMode="CanResize"
+        AllowsTransparency="True" WindowStyle="None" ShowInTaskbar="False">
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="White"/>
+    </Window.Background>
+    <Grid>
+        <Image Stretch="None" x:Name="imgStand"
+               MouseDown="ImgStand_MouseDown" MouseUp="ImgStand_MouseUp">
+            <Image.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="chkTopmost" IsCheckable="True" Header="Topmost"
+                              Checked="ChkTopmost_CheckChanged" Unchecked="ChkTopmost_CheckChanged"></MenuItem>
+                    <MenuItem Click="MenuItemClose_Click" Header="Close"></MenuItem>
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+    </Grid>
+</Window>
