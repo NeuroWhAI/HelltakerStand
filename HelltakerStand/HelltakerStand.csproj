@@ -68,6 +68,7 @@
     <Compile Include="StandWindow.xaml.cs">
       <DependentUpon>StandWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

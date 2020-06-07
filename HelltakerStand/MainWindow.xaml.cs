@@ -84,6 +84,21 @@ namespace HelltakerStand
             {
                 vm.LoadStands();
             }
+
+            Task.Factory.StartNew(() =>
+            {
+                if (UpdateManager.CheckUpdate())
+                {
+                    var choice = Dispatcher.Invoke(() => MessageBox.Show("There are new updates.\nWould you like to open the download page?",
+                        Title,
+                        MessageBoxButton.YesNo, MessageBoxImage.Question));
+
+                    if (choice == MessageBoxResult.Yes)
+                    {
+                        Process.Start("https://neurowhai.tistory.com/398");
+                    }
+                }
+            });
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
